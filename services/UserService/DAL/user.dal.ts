@@ -1,6 +1,7 @@
 import { User } from '../../../db/models/models';
 import { IUser, IUserDal } from '../user.interfaces';
 import * as fs from 'fs';
+import { Config } from '../../../config';
 
 export class UserDal implements IUserDal{
     private User = User;
@@ -15,7 +16,7 @@ export class UserDal implements IUserDal{
     }
 
     public async create(newUser: IUser): Promise<void>{
-        const photoPath = `C:\\Users\\exotk\\OneDrive\\Documents\\Photos\\Users\\`; // TODO: move to config file
+        const photoPath = Config.PHOTOSPATH;
         const user = await this.User.create({email: newUser.email,
             username: newUser.username,
             password: newUser.password,

@@ -1,5 +1,6 @@
 import { IPost ,IPostDal } from "../post.interfaces";
 import { Post } from '../../../db/models/models';
+import { Config } from '../../../config';
 
 
 export class PostDal implements IPostDal{
@@ -15,7 +16,7 @@ export class PostDal implements IPostDal{
     }
 
     public async create(userId: number, newPost: IPost): Promise<void>{
-        const photoPath = `C:\\Users\\exotk\\OneDrive\\Documents\\Photos\\Users\\${userId}`; // TODO: move to config file
+        const photoPath = `${Config.PHOTOSPATH}${userId}`;
         const post = await this.Post.create({
             text: newPost.text,
             date: newPost.date,
