@@ -12,4 +12,5 @@ export async function hashPassword(userpassword): Promise<string>{
 
 export function createCookie(tokenData: ITokenData): string{
     return `Authorization=${tokenData.token}; HttpOnly: false; Max-Aage=${tokenData.expiresIn}`
-} 
+}
+ 
