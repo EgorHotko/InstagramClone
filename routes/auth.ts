@@ -20,6 +20,11 @@ router.post('/login', async (req, res) => {
     const tokenData = await createToken(newUser);
     await res.setHeader('Instagram-Cookie', [createCookie(tokenData)]);
     await res.send(newUser); 
+});
+
+router.post('/logout', (req, res) =>{
+    res.setHeader('Instagram-Cookie', ['Authorization=;Max-age=0']);
+    res.send(200);
 })
 
 export default router;

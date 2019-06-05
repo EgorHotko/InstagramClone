@@ -22,3 +22,7 @@ export function createToken(user: IUser): ITokenData{
         token: jwt.sign(dataStoredInToken, secret, { expiresIn })
     };
 }
+
+export async function verifyToken(token){
+    return await jwt.verify(token, Config.JWT_SECRET) as DataStoredInToken;
+}
