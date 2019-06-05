@@ -1,6 +1,7 @@
 import * as express from 'express';
 import postsRouter from './routes/posts';
 import usersRouter from './routes/users';
+import authRouter from './routes/auth';
 import { database } from './db/database';
 
 
@@ -10,6 +11,7 @@ database.sync();
 app.use(express.json());
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

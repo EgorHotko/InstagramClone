@@ -15,13 +15,24 @@ export class UserDal implements IUserDal{
         return user;
     }
 
-    public async create(newUser: IUser): Promise<void>{
+    public async getByEmail(userEmail: string): Promise<IUser>{
+        const user = await this.User.findOne({
+            where: {email: userEmail}
+        });
+        return user;
+    }
+
+    public async create(newUser: IUser): Promise<IUser>{
+        if(!newUser.username){
+            newUser.username = /[^@]+/.exec(newUser.email)[0];
+        }
         const photoPath = Config.PHOTOSPATH;
         const user = await this.User.create({email: newUser.email,
             username: newUser.username,
             password: newUser.password,
             photo: photoPath});
         await fs.mkdirSync(photoPath + `${user.id}`);
+        return user;
     }
 
     public async deleteById(userId: number): Promise<void>{
@@ -42,6 +53,17 @@ export class UserDal implements IUserDal{
     public async isUserExisted(userId: number): Promise<boolean>{
         const user = await this.User.findOne({
             where: {id: userId}
+        });
+        if(user == null){
+            return false;
+        } else{
+            return true;
+        }
+    }
+
+    public async isUserExistedByEmail(userEmail: string): Promise<boolean>{
+        const user = await this.User.findOne({
+            where: {email: userEmail}
         });
         if(user == null){
             return false;
