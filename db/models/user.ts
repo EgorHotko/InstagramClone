@@ -4,7 +4,7 @@ import { database } from '../database';
 
 const User = database.define("user", {
         id: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },

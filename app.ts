@@ -3,6 +3,7 @@ import postsRouter from './routes/posts';
 import usersRouter from './routes/users';
 import authRouter from './routes/auth';
 import commentRouter from './routes/comment';
+import hashtagRouter from './routes/hashtag';
 import { database } from './db/database';
 import * as cookieParser from 'cookie-parser';
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/comments', commentRouter);
+app.use('/api/hashtag', hashtagRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(3000, function () {

@@ -3,7 +3,7 @@ import { database } from '../database';
 
 const Comment = database.define("comment", {
         id: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
