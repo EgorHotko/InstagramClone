@@ -1,6 +1,6 @@
 import { IUserDal, IUser } from "../UserService/user.interfaces";
 import { UserDal } from '../UserService/DAL/user.dal';
-import * as bcrypt from 'bcrypt';
+import { comparePassword, hashPassword } from '../../auth/auth';
 
 
 export class AuthService {
@@ -14,7 +14,7 @@ export class AuthService {
         if(await this.userDal.isUserExistedByEmail(user.email)){
             throw new Error('User already exists');
         } else{
-            const hashedPassword = await bcrypt.hash(user.password, 10);
+            const hashedPassword = await hashPassword(user.password);
             const newUser = await this.userDal.create({...user, password: hashedPassword}); 
             newUser.password = undefined;
             return newUser;
@@ -24,7 +24,7 @@ export class AuthService {
     public async loginIn(userData: IUser): Promise<IUser>{
         const user = await this.userDal.getByEmail(userData.email);
         if(user){
-            const isPasswordMatching = await bcrypt.compare(userData.password, user.password);
+            const isPasswordMatching = await comparePassword(userData.password, user.password);
             if(isPasswordMatching){
                 user.password = undefined;
                 return user;
