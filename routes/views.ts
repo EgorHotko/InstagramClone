@@ -24,4 +24,8 @@ router.get('/login', (req, res) => {
     res.render('logInPage');
 });
 
+router.get('/add/post', (req, res) => {
+    res.render('addingPostPage');
+});
+
 export default router;
