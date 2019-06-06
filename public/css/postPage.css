@@ -1,0 +1,87 @@
+.content-container {
+    padding-left: 300px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container {
+    padding-bottom: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 616px;
+    height: 100%;
+    border:1px solid rgba(209, 201, 201, 0.932);
+}
+
+.post-header {
+    height: 60px;
+    padding: 10px;
+    display: flex;
+}
+
+.post-header img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.post-header a{
+    padding-top: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.post-header a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.photo-container {
+    width: 616px;
+    height: 700px;
+    text-align: center;
+}
+
+.photo-container img {
+    width: 614px;
+    height: 700px;
+    padding-right: 1px;
+}
+
+.post-footer {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-footer a {
+    padding-right: 10px;
+}
+
+.post-comments-container {
+    width: 600px;
+    padding: 10px;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment h6 {
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.comment a{
+    padding-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.comment a:hover{
+    text-decoration: none;
+    color: black;
+}

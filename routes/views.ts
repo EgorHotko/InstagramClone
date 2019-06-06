@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
 
 router.get("/user/:id", (req, res) =>{
     res.render('userPage');
+});
+
+router.get('/post/:id', (req, res) => {
+    res.render('postPage');
 })
 
 export default router;
