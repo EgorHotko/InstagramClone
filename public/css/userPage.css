@@ -1,0 +1,70 @@
+.user-container {
+    padding-top: 30px;
+    width: 1100;
+    padding-left: 190px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-header-container {
+    width: 900px;
+    display: flex;
+}
+
+.user-photo-container {
+    text-align: center;
+}
+
+.user-photo-container img{
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+}
+
+.user-info-container {
+    padding-left: 60px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-nameinfo-container {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-nameinfo-container button {
+    height: 30px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+
+.user-statistic-container {
+    padding-top: 30px;
+    display: flex;
+}
+
+.user-content-container {
+    padding-top: 40px;
+    width: 1100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-content-row {
+    padding-top: 10px;
+    height: 320px;
+    width: 1100px;
+    display: flex;
+}
+.user-content-photo {
+    height: 300px;
+    width: 300px;
+}
+
+.user-content-photo img {
+    height: 290px;
+    width: 290px;
+}

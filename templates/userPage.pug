@@ -1,0 +1,30 @@
+extends baseNavbar.pug
+block append head
+    link(rel="stylesheet", href="/css/userPage.css")
+block content
+    div(class="user-container")
+        div(class="user-header-container")
+            div(class="user-photo-container")
+                img(src="https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", alt="")
+            div(class="user-info-container")
+                div(class="user-nameinfo-container")
+                    h4 username
+                    button(type="button" class="btn btn-outline-secondary") Edit
+                div(class="user-statistic-container")
+                    h6 15 posts
+        div(class="user-content-container")
+            div(class="user-content-row")
+                div(class="user-content-photo")
+                    a(href="/post/1")
+                        img(src="https://www.gheda.eu/wp-content/uploads/2017/05/immagine-linea-dogdog-wild.jpg", alt="")
+                div(class="user-content-photo")
+                    a(href="/post/2")
+                        img(src="https://media.npr.org/assets/img/2017/02/21/gettyimages-557703679-5f2662959c2e2f9a20b69291b35801c279920591-s800-c85.jpg", alt="")
+                div(class="user-content-photo")
+                    a(href="/post/3")
+                        img(src="https://media.nature.com/w800/magazine-assets/d41586-019-00150-9/d41586-019-00150-9_16400156.jpg", alt="")
+            div(class="user-content-row")
+                div(class="user-content-photo")
+                    a(href="/post/4")
+                        img(src="https://www.gheda.eu/wp-content/uploads/2017/05/immagine-linea-dogdog-wild.jpg", alt="")
+                        
