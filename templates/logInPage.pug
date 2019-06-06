@@ -1,14 +1,11 @@
 extends baseNavbar.pug
 block append head
-    link(rel="stylesheet", href="/css/registerPage.css")
+    link(rel="stylesheet", href="/css/logInPage.css")
 block content
-    div(class="registration-container")
+    div(class="login-container")
         a(class="google-btn" href="/auth/google") LogIn with Google+
-        div(class="registration-content")
+        div(class="login-content")
             form
-                div(class="form-group")
-                    label(for="formGroupUserInput") Username
-                    input(type="text" class="form-control" id="usernameInput" placeholder="username")
                 div(class="form-group")
                     label(for="formGroupUserInput") Email
                     input(type="text" class="form-control" id="emailInput" placeholder="email")
@@ -16,5 +13,5 @@ block content
                     label(for="formGroupUserInput") Password
                     input(type="password" class="form-control" id="passwordInput" placeholder="password")
                 div(class="btn-wrapper")
-                    button(class="btn-primary" type="button") Register
+                    button(class="btn-primary" type="button") Log in
                     

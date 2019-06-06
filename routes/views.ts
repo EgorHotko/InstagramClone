@@ -18,6 +18,10 @@ router.get('/post/:id', (req, res) => {
 
 router.get('/register', (req, res) => {
     res.render('registerPage');
-})
+});
+
+router.get('/login', (req, res) => {
+    res.render('logInPage');
+});
 
 export default router;

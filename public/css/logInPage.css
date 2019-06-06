@@ -1,0 +1,22 @@
+.login-container {
+    padding-top: 60px;
+    padding-left: 470px;
+}
+
+.login-content {
+    padding-top: 20px;
+    width: 300px;
+}
+
+.btn-wrapper button {
+    height: 40px;
+    width: 80px;
+    border-radius: 25%;
+}
+
+.google-btn {
+    border-radius: 10%;
+    color: #fff;
+    padding: 10px;
+    background-color: #ff5054;
+}
