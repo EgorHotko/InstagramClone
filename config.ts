@@ -5,6 +5,6 @@ export const Config = {
         DB_HOST: "localhost",
         DB_NAME: "instagram"
     },
-    PHOTOSPATH: `C:\\Users\\exotk\\OneDrive\\Documents\\Photos\\Users\\`,
+    PHOTOSPATH: `${__dirname}\\photos`,
     JWT_SECRET: 'ILoveCats'
 }

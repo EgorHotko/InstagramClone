@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { PostController } from '../controllers/PostController/post.contoller';
+import { upload } from '../db/storage';
 
 const router = express.Router();
 const postController = new PostController();
@@ -10,9 +11,10 @@ router.get('/:id', async (req, res) => {
     res.send(post);
 });
 
-router.post('/user/:userId', async (req, res) => {
+router.post('/user/:userId', upload.single('photo'), async (req, res) => {
+    const filename = req["file"].originalname;
     const userId = +req.params.userId;
-    const newPost = req.body;
+    const newPost = {...req.body, photo: filename, date: new Date(Date.now()).toString()};
     await postController.createPost(userId, newPost);
     await res.send("Post created");
 });

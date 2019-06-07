@@ -16,13 +16,12 @@ export class PostDal implements IPostDal{
     }
 
     public async create(userId: number, newPost: IPost): Promise<void>{
-        const photoPath = `${Config.PHOTOSPATH}${userId}`;
+        const photoPath = `${Config.PHOTOSPATH}\\${newPost.photo}`;
         const post = await this.Post.create({
             text: newPost.text,
             date: newPost.date,
             photo: photoPath,
             userId: userId});
-        // TODO: create photo in photoPath + `${userId}` folder
     }
 
     public async deleteById(postId: number): Promise<void>{

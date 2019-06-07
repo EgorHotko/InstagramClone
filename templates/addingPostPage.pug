@@ -1,11 +1,12 @@
 extends baseNavbar.pug
 block append head
     link(rel="stylesheet", href="/css/addingPostPage.css")
+    script(src='/js/addingpostPage.js')
 block content
     div(class="createpost-container")
         h3 Create your post:
         div(class="createpost-content")
-            form
+            form(method="post" enctype="multipart/form-data" action="/api/posts/user/:userId")
                 div(class="form-group")
                     label(for="formGroupPostInput") Input text
                     input(type="text" class="form-control" id="textInput" placeholder="text")
@@ -13,4 +14,4 @@ block content
                     label(for="formGroupPostInput") Choose photo
                     input(type="file" id="postPhotoInput" accept="image/png, image/jpeg")
                 div(class="btn-wrapper")
-                    button(class="btn-primary" type="button") Create
+                    button(class="btn-primary" onclick='sendReq()' type="button" id="createBtn") Create
