@@ -1,6 +1,7 @@
 extends baseNavbar.pug
 block append head
     link(rel="stylesheet", href="/css/postPage.css")
+    script(src='/js/postPage.js')
 block content
     div(class="content-container")
         div(class="post-container")
@@ -15,19 +16,8 @@ block content
                 div(class="comment")
                     a(href='user/1') username1
                     h6 first comment
-            div(class="post-comments-container")
-                div(class="comment")
-                    a(href="user/2") username2
-                    h6 second comment
-            div(class="post-comments-container")
-                div(class="comment")
-                    a(href="user/2") username2
-                    h6 second comment
-            div(class="post-comments-container")
-                div(class="comment")
-                    a(href="user/2") username2
-                    h6 second comment
-            div(class="input-group mb-3")
-                input(type="text" class="form-control" placeholder="Comment..." aria-label="Recipient's username" aria-describedby="button-addon2")
-                div(class="input-group-append")
-                    button(class="btn btn-outline-secondary" type="button" id="button-add-comment") Add
+            form(method="post" action="/api/comments" enctype="multipart/form-data" accept-charset="utf-8")
+                div(class="input-group mb-3")
+                    input(type="text" class="form-control" id="commentInput" placeholder="Comment...")
+                    div(class="input-group-append")
+                        button(class="btn btn-outline-secondary" onclick="addComment()" type="button" id="button-add-comment") Add
