@@ -7,7 +7,7 @@ const commentController = new CommentController();
 
 router.get('/post/:postId', async (req, res) => {
     const postId: number = +req.params.postId;
-    const comments = await commentController. getComments(postId);
+    const comments = await commentController.getComments(postId);
     res.send(comments);
 });
 

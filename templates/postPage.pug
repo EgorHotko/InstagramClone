@@ -7,15 +7,16 @@ block content
         div(class="post-container")
             div(class="post-header")
                 img(src="https://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/prototypen/w_sexy_gr.jpg", alt="")
-                a(href='user/1') nickname
+                a(href='/user/1') #{user.username}
             div(class="photo-container")
-                img(src="https://images.unsplash.com/photo-1483691278019-cb7253bee49f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80", alt="")
+                img(src=`${post.photo}`, alt="")
             div(class="post-footer")
-                h6 2019-02-12
+                h6 #{new Date(post.date).toISOString().slice(0,10)}
             div(class="post-comments-container")
-                div(class="comment")
-                    a(href='user/1') username1
-                    h6 first comment
+                each comment in comments
+                    div(class="comment")
+                        a(href='/user/1') #{comment.user.username}
+                        h6 #{comment.text}
             form(method="post" action="/api/comments" enctype="multipart/form-data" accept-charset="utf-8")
                 div(class="input-group mb-3")
                     input(type="text" class="form-control" id="commentInput" placeholder="Comment...")
