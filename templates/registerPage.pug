@@ -1,11 +1,12 @@
 extends baseNavbar.pug
 block append head
     link(rel="stylesheet", href="/css/registerPage.css")
+    script(src='/js/registerPage.js')
 block content
     div(class="registration-container")
         a(class="google-btn" href="/auth/google") LogIn with Google+
         div(class="registration-content")
-            form
+            form(method="post" enctype="multipart/form-data" action="/api/users")
                 div(class="form-group")
                     label(for="formGroupUserInput") Username
                     input(type="text" class="form-control" id="usernameInput" placeholder="username")
@@ -16,5 +17,5 @@ block content
                     label(for="formGroupUserInput") Password
                     input(type="password" class="form-control" id="passwordInput" placeholder="password")
                 div(class="btn-wrapper")
-                    button(class="btn-primary" type="button") Register
+                    button(class="btn-primary" type="button" onclick=" registerUser()") Register
                     

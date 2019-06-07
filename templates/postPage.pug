@@ -7,7 +7,7 @@ block content
         div(class="post-container")
             div(class="post-header")
                 img(src="https://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/prototypen/w_sexy_gr.jpg", alt="")
-                a(href='/user/1') #{user.username}
+                a(href=`/user/${user.id}`) #{user.username}
             div(class="photo-container")
                 img(src=`${post.photo}`, alt="")
             div(class="post-footer")
@@ -15,7 +15,7 @@ block content
             div(class="post-comments-container")
                 each comment in comments
                     div(class="comment")
-                        a(href='/user/1') #{comment.user.username}
+                        a(href=`/user/${comment.user.id}`) #{comment.user.username}
                         h6 #{comment.text}
             form(method="post" action="/api/comments" enctype="multipart/form-data" accept-charset="utf-8")
                 div(class="input-group mb-3")

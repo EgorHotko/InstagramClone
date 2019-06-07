@@ -11,11 +11,7 @@ export class CommentService implements ICommentService{
 
     public async getCommentsByPostId(postId: number): Promise<IComment[]>{
         const comments = await this.commentDal.getByPostId(postId);
-        if(comments.length == 0){
-            throw new Error("Comment not found");
-        } else{
-            return comments;
-        }
+        return comments;
     }
 
     public async createComment(newComment: IComment): Promise<void>{
