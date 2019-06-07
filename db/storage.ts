@@ -2,7 +2,7 @@ import * as multer from 'multer';
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'photos')
+      cb(null, 'public/photos')
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)

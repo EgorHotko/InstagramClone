@@ -1,5 +1,6 @@
 import * as express from 'express';
-
+import { Config } from '../config';
+import fetch from 'node-fetch';
 
 const router = express.Router();
 
@@ -8,8 +9,17 @@ router.get('/', (req, res) => {
     res.render('mainPage');
 });
 
-router.get("/user/:id", (req, res) =>{
-    res.render('userPage');
+router.get("/user/:id", async (req, res) =>{
+    const userId = +req.params.id;
+    try{
+        const userRes = await fetch(`http://localhost:3000/api/users/${userId}`);
+        const user = await userRes.json();
+        const postsRes = await fetch(`http://localhost:3000/api/posts/user/${userId}`);
+        const posts = await postsRes.json();
+        await res.render('userPage', {user: user, posts: posts});
+    } catch(err){
+        throw new Error(err);
+    }
 });
 
 router.get('/post/:id', (req, res) => {

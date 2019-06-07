@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/visualstudiocode
 # Edit at https://www.gitignore.io/?templates=visualstudiocode
-/photos
+/public/photos
 /node_modules/*
 /node_modules
 ### VisualStudioCode ###

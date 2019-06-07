@@ -1,10 +1,11 @@
 import { IPost ,IPostDal } from "../post.interfaces";
-import { Post } from '../../../db/models/models';
+import { Post, Comment } from '../../../db/models/models';
 import { Config } from '../../../config';
 
 
 export class PostDal implements IPostDal{
     private Post = Post;
+    private Comment = Comment;
 
     constructor(){}
 
@@ -13,6 +14,13 @@ export class PostDal implements IPostDal{
             where: {id: postId}
         });
         return post;
+    }
+
+    public async getByUserId(userId: number): Promise<IPost[]>{
+        const posts = await this.Post.findAll({
+            where: {userId: userId}
+        });
+        return posts;
     }
 
     public async create(userId: number, newPost: IPost): Promise<void>{
@@ -25,6 +33,9 @@ export class PostDal implements IPostDal{
     }
 
     public async deleteById(postId: number): Promise<void>{
+        await this.Comment.destroy({
+            where: {postId: postId}
+        });
         await this.Post.destroy({
             where: {id: postId}
         }, { force: true });

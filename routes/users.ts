@@ -8,6 +8,7 @@ const userController = new UserController();
 router.get('/:id', async (req, res) => {
     const userId: number = +req.params.id;
     const user = await userController.getUser(userId);
+    user.password = undefined;
     await res.send(user);
 });
 

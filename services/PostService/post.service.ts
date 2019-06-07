@@ -19,6 +19,11 @@ export class PostService implements IPostService{
         }
     }
 
+    public async getPostsByUserId(userId: number): Promise<IPost[]>{
+        const posts = await this.postDal.getByUserId(userId);
+        return posts;
+    }
+
     public async createPost(userId: number, newPost: IPost): Promise<void>{
         await this.postDal.create(userId, newPost);
     }

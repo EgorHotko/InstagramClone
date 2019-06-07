@@ -14,6 +14,10 @@ export class PostController implements IPostController{
         return await this.postService.getPostById(postId);
     }
 
+    async getPostsByUserId(userId: number): Promise<IPost[]>{
+        return await this.postService.getPostsByUserId(userId);
+    }
+
     async createPost(userId: number, newPost: IPost): Promise<void>{
         await this.postService.createPost(userId, newPost);
     }
