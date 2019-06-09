@@ -14,3 +14,12 @@ const addComment = function() {
     fd.append('userId', userId);
     xhr.send(fd);
 }
+
+const deletePost = function(){
+    const xhr = new XMLHttpRequest();
+    let url = window.location.pathname;
+    let id = url.substring(url.lastIndexOf('/') + 1);
+    xhr.open("DELETE", `/api/posts/${id}`);
+    xhr.send();
+    document.location.href = "/";
+}

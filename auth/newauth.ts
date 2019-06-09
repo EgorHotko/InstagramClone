@@ -1,5 +1,4 @@
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const passportJWT = require("passport-jwt");
 import { comparePassword, hashPassword } from './auth';
 import { UserController } from '../controllers/UserController/user.controller';
 const LocalStrategy = require('passport-local').Strategy;
@@ -37,7 +36,6 @@ module.exports = (passport) => {
             callbackURL: "http://localhost:3000/api/auth/google/callback"
         },
         async (token, refreshToken, profile, done) => {
-            console.log("We are in google strategy");
            const user = await userController.getUserByEmail(profile.emails[0].value);
            if(Object.keys(user).length != 0){
             return done(null, user);

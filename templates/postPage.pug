@@ -6,12 +6,14 @@ block content
     div(class="content-container")
         div(class="post-container")
             div(class="post-header")
-                img(src="https://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/prototypen/w_sexy_gr.jpg", alt="")
+                img(src=user.photo, alt="")
                 a(href=`/user/${user.id}`) #{user.username}
             div(class="photo-container")
                 img(src=`${post.photo}`, alt="")
             div(class="text-container")
                 h6 #{post.text}
+                if currentUser.id == post.userId
+                    a(onclick="deletePost()") Delete
             div(class="post-footer")
                 h6 #{new Date(post.date).toISOString().slice(0,10)}
             div(class="post-comments-container")

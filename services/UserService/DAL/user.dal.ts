@@ -26,7 +26,7 @@ export class UserDal implements IUserDal{
         if(!newUser.username){
             newUser.username = /[^@]+/.exec(newUser.email)[0];
         }
-        const photoPath = Config.PHOTOSPATH;
+        const photoPath = Config.PHOTOSPATH + `\\` +Config.STARTPHOTONAME;
         const user = await this.User.create({email: newUser.email,
             username: newUser.username,
             password: newUser.password,
@@ -44,9 +44,12 @@ export class UserDal implements IUserDal{
         const user = await this.User.findOne({
             where: {id: userId}
         });
-        await user.update({username: newUserData.username,
+        await user.update({
+            username: newUserData.username,
             email: newUserData.email,
-            password: newUserData.password});
+            password: newUserData.password,
+            photo: newUserData.photo
+        });
     }
 
     public async isUserExisted(userId: number): Promise<boolean>{
