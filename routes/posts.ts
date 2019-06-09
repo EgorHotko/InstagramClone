@@ -1,10 +1,13 @@
 import * as express from 'express';
 import { PostController } from '../controllers/PostController/post.contoller';
+import { HashtagController } from '../controllers/HashtagController/hashtag.controller';
 import { upload } from '../db/storage';
 import { IPost } from '../services/PostService/post.interfaces';
+import fetch from 'node-fetch';
 
 const router = express.Router();
 const postController = new PostController();
+const hashtagController = new HashtagController();
 
 router.get('/', async (req, res) => {
     const posts: IPost[] = await postController.getLastPosts();
@@ -27,7 +30,11 @@ router.post('/user/:userId', upload.single('photo'), async (req, res) => {
     const filename = req["file"].originalname;
     const userId = +req.params.userId;
     const newPost = {...req.body, photo: filename, date: new Date(Date.now()).toString()};
-    await postController.createPost(userId, newPost);
+    const hashtags = newPost.text.match(/\B\#\w\w+\b/g);
+    const post = await postController.createPost(userId, newPost);
+    hashtags.map(async (hashtag) => {
+        await hashtagController.addPostToHashtag(hashtag.substr(1), post.id);
+    });
     await res.send("Post created");
 });
 

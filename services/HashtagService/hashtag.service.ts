@@ -23,4 +23,8 @@ export class HashtagService implements IHashtagService{
         const posts = await this.hashtagDal.getPostsByHashtagText(hashtagText);
         return posts;
     }
+
+    public async deletePostFromHashtags(postId: number): Promise<void>{
+        await this.hashtagDal.deletePost(postId);
+    }
 }

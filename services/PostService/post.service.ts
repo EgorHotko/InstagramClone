@@ -29,8 +29,8 @@ export class PostService implements IPostService{
         return posts;
     }
 
-    public async createPost(userId: number, newPost: IPost): Promise<void>{
-        await this.postDal.create(userId, newPost);
+    public async createPost(userId: number, newPost: IPost): Promise<IPost>{
+        return await this.postDal.create(userId, newPost);
     }
 
     public async editPostById(userId: number,newPostData: string): Promise<void>{

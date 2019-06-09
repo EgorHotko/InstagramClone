@@ -22,8 +22,8 @@ export class PostController implements IPostController{
         return await this.postService.getPostsByUserId(userId);
     }
 
-    async createPost(userId: number, newPost: IPost): Promise<void>{
-        await this.postService.createPost(userId, newPost);
+    async createPost(userId: number, newPost: IPost): Promise<IPost>{
+        return await this.postService.createPost(userId, newPost);
     }
 
     async editPost(postId: number, newPostData: string): Promise<void>{

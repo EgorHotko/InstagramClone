@@ -19,4 +19,8 @@ export class HashtagController implements IHashtagController{
         return posts;
     }   
 
+    async deletePostFromHashtags(postId: number): Promise<void>{
+        await this.hashtagService.deletePostFromHashtags(postId);
+    }
+
 }

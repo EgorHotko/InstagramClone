@@ -13,7 +13,7 @@ router.get('/:hashtag/posts', async (req, res) => {
 router.post('/:hashtag', async (req, res) => {
     const hashtagText: string = req.params.hashtag;
     const post = req.body;
-    await hashtagController.addPostToHashtag(hashtagText, post);
+    await hashtagController.addPostToHashtag(hashtagText, post.id);
     await res.send("Post added to hashtag");
 });
 

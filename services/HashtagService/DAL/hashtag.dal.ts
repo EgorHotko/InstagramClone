@@ -15,6 +15,7 @@ export class HashtagDal implements IHashtagDal{
         const post = await this.Post.findOne({
             where: {id: postId}
         });
+        console.log(hashtag);
         await hashtag.addPost(post);
     }
 
@@ -33,6 +34,12 @@ export class HashtagDal implements IHashtagDal{
         return hashtag;
     }
 
+    public async deletePost(postId: number): Promise<void>{
+        await this.Hashtag.destroy({
+            where: {postId: postId}
+        });
+    }
+
     public async create(newHashtag: IHashtag): Promise<IHashtag>{
         const hashtag = await this.Hashtag.create({
             text: newHashtag.text
@@ -41,7 +48,7 @@ export class HashtagDal implements IHashtagDal{
     }
 
     public async isHashtagExisted(hashtagText: string): Promise<boolean>{
-        const hashtag = this.Hashtag.findOne({
+        const hashtag = await this.Hashtag.findOne({
             where: {text: hashtagText}
         });
         if(hashtag == null){
