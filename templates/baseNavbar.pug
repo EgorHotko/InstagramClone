@@ -4,12 +4,16 @@ html
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
         link(rel="stylesheet", href="/css/baseNavbar.css")
         link(rel="stylesheet", href="/css/normalize.css")
+        script(src="/js/baseNav.js")
         title Instagram
     body
         nav(class="navigbar")
             div(class="navigbar-left-content")
                 img(src="https://cdn2.iconfinder.com/data/icons/harmonicons-04/64/instagram-512.png" width="40" height="40" class="rounded" alt="")
                 a(href="/") Instagram
+                if currentUser
+                    a(href=`/user/${currentUser.id}`) Home
+                    button(onclick="logOut()") Logout
             div(class="navigbar-right-content")
                 form
                     input(id="search" type="search" placeholder='Search')

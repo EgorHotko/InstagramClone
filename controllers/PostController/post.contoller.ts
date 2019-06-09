@@ -10,6 +10,10 @@ export class PostController implements IPostController{
         this.postService = new PostService();
     }
 
+    async getLastPosts(): Promise<IPost[]>{
+        return await this.postService.getLastPosts();
+    }
+
     async getPost(postId: number): Promise<IPost>{
         return await this.postService.getPostById(postId);
     }

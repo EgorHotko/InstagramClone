@@ -7,8 +7,10 @@ const addComment = function() {
     let date = new Date(Date.now()).toString();
     xhr.open("POST", '/api/comments');
     let text = document.getElementById("commentInput").value;
+    let userId = document.getElementById("currentUserIdInput").value;
     fd.append('text', text);
     fd.append('postId', id);
     fd.append('date', date);
+    fd.append('userId', userId);
     xhr.send(fd);
 }

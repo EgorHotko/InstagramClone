@@ -10,8 +10,13 @@ export class PostService implements IPostService{
         this.postDal = new PostDal();
     }
 
+    public async getLastPosts(): Promise<IPost[]>{
+        const posts: IPost[] = await this.postDal.getLastPosts();
+        return posts;
+    }
+
     public async getPostById(postId: number): Promise<IPost>{
-        const post = await this.postDal.getById(postId);
+        const post: IPost = await this.postDal.getById(postId);
         if(post == undefined){
             throw new Error("Post not found");
         } else{
@@ -20,7 +25,7 @@ export class PostService implements IPostService{
     }
 
     public async getPostsByUserId(userId: number): Promise<IPost[]>{
-        const posts = await this.postDal.getByUserId(userId);
+        const posts: IPost[] = await this.postDal.getByUserId(userId);
         return posts;
     }
 

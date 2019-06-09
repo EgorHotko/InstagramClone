@@ -13,7 +13,7 @@ router.get('/post/:postId', async (req, res) => {
 
 router.post('/', upload.fields([]), async (req, res) => {
     const newComment = req.body;
-    await commentController.createComment({...newComment, userId: 4});
+    await commentController.createComment(newComment);
     await res.send("Comment created");
 });
 

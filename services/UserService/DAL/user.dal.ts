@@ -31,7 +31,6 @@ export class UserDal implements IUserDal{
             username: newUser.username,
             password: newUser.password,
             photo: photoPath});
-        await fs.mkdirSync(photoPath + `${user.id}`);
         return user;
     }
 

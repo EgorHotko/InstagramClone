@@ -1,7 +1,6 @@
 import * as express from 'express';
 import { UserController } from '../controllers/UserController/user.controller';
 import { IUser } from '../services/UserService/user.interfaces';
-import { upload } from '../db/storage';
 
 const router = express.Router();
 const userController = new UserController();
@@ -13,7 +12,18 @@ router.get('/:id', async (req, res) => {
     await res.send(user);
 });
 
-router.post('/', upload.fields([]), async (req, res) => {
+router.get('/email/:email', async (req, res) => {
+    const userEmail: string = req.params.email;
+    const user = await userController.getUserByEmail(userEmail);
+    if(user){
+        user.password = undefined;
+        await res.send(user);
+    } else {
+        await res.send({});
+    }
+});
+
+router.post('/', async (req, res) => {
     const newUser = req.body;
     await userController.createUser(newUser);
     await res.send("User Created");

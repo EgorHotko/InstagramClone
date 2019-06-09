@@ -16,6 +16,14 @@ export class PostDal implements IPostDal{
         return post;
     }
 
+    public async getLastPosts(): Promise<IPost[]>{
+        const posts = await this.Post.findAll({
+            limit: 10,
+            order: [[ 'id', 'DESC' ]]
+        });
+        return posts;
+    }
+
     public async getByUserId(userId: number): Promise<IPost[]>{
         const posts = await this.Post.findAll({
             where: {userId: userId}

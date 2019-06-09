@@ -50,6 +50,10 @@
     padding-right: 1px;
 }
 
+.text-container h6{
+    padding-left: 20px;
+}
+
 .post-footer {
     padding-top: 10px;
     padding-left: 10px;

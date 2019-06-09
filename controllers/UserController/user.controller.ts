@@ -13,8 +13,12 @@ export class UserController implements IUserController{
         return await this.userService.getUserById(userId);
     }
 
-    async createUser(newUser: IUser): Promise<void>{
-        await this.userService.createUser(newUser);
+    async getUserByEmail(userEmail: string): Promise<IUser>{
+        return await this.userService.getUserByEmail(userEmail);
+    }
+
+    async createUser(newUser: IUser): Promise<IUser>{
+        return await this.userService.createUser(newUser);
     }
 
     async editUser(userId: number, newUserData: IUser): Promise<void>{

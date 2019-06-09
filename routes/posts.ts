@@ -1,19 +1,25 @@
 import * as express from 'express';
 import { PostController } from '../controllers/PostController/post.contoller';
 import { upload } from '../db/storage';
+import { IPost } from '../services/PostService/post.interfaces';
 
 const router = express.Router();
 const postController = new PostController();
 
+router.get('/', async (req, res) => {
+    const posts: IPost[] = await postController.getLastPosts();
+    res.send(posts);
+})
+
 router.get('/:id', async (req, res) => {
     const postId: number = +req.params.id;
-    const post = await postController.getPost(postId);
+    const post: IPost = await postController.getPost(postId);
     res.send(post);
 });
 
 router.get('/user/:id', async (req, res) => {
     const userId: number = +req.params.id;
-    const posts = await postController.getPostsByUserId(userId);
+    const posts: IPost[] = await postController.getPostsByUserId(userId);
     res.send(posts);
 })
 

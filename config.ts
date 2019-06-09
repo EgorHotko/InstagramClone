@@ -6,5 +6,10 @@ export const Config = {
         DB_NAME: "instagram"
     },
     PHOTOSPATH: `\\photos`,
-    JWT_SECRET: 'ILoveCats'
+    JWT_SECRET: 'ILoveCats',
+    COOCKIE_SESSION: {
+        name: 'session',
+        keys: ['123'],
+        maxAge: 60 * 60 * 1000
+    }
 }

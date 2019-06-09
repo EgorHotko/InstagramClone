@@ -11,7 +11,8 @@ block content
                     h4 #{user.username}
                 div(class="user-statistic-container")
                     h6 #{posts.length} posts
-                    a(href="/add/post") Add Post
+                    if currentUser.id == user.id
+                        a(href="/add/post") Add Post
         div(class="user-content-container")
             each post in posts
                 div(class="user-content-photo")

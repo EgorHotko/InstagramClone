@@ -18,8 +18,13 @@ export class UserService implements IUserService{
         }
     }
 
-    public async createUser(newUser: IUser): Promise<void>{
-        await this.userDal.create(newUser);
+    public async getUserByEmail(userEmail: string): Promise<IUser>{
+        const user = await this.userDal.getByEmail(userEmail);
+        return user;
+    }
+
+    public async createUser(newUser: IUser): Promise<IUser>{
+        return await this.userDal.create(newUser);
     }
 
     public async editUserById(userId: number,newUserData: IUser): Promise<void>{

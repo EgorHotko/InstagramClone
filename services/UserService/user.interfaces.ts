@@ -18,7 +18,8 @@ export interface IUserDal {
 
 export interface IUserService {
     getUserById(userId: number): Promise<IUser>;
-    createUser(newUser: IUser): Promise<void>;
+    getUserByEmail(userEmail: string): Promise<IUser>;
+    createUser(newUser: IUser): Promise<IUser>;
     editUserById(userId: number,newUserData: IUser): Promise<void>;
     deleteUserById(userId: number): Promise<void>;
 }

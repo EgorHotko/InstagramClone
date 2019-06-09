@@ -4,9 +4,9 @@ block append head
     script(src='/js/registerPage.js')
 block content
     div(class="registration-container")
-        a(class="google-btn" href="/auth/google") LogIn with Google+
+        a(class="google-btn" href="/api/auth/google") LogIn with Google+
         div(class="registration-content")
-            form(method="post" enctype="multipart/form-data" action="/api/users")
+            form(method="post" enctype="multipart/form-data" action="/api/auth/register")
                 div(class="form-group")
                     label(for="formGroupUserInput") Username
                     input(type="text" class="form-control" id="usernameInput" placeholder="username")
