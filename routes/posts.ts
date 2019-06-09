@@ -32,9 +32,11 @@ router.post('/user/:userId', upload.single('photo'), async (req, res) => {
     const newPost = {...req.body, photo: filename, date: new Date(Date.now()).toString()};
     const hashtags = newPost.text.match(/\B\#\w\w+\b/g);
     const post = await postController.createPost(userId, newPost);
-    hashtags.map(async (hashtag) => {
-        await hashtagController.addPostToHashtag(hashtag.substr(1), post.id);
-    });
+    if(hashtags){
+        hashtags.map(async (hashtag) => {
+            await hashtagController.addPostToHashtag(hashtag.substr(1), post.id);
+        });
+    }
     await res.send("Post created");
 });
 
