@@ -61,8 +61,9 @@ router.get('/login', (req, res) => {
     res.render('logInPage');
 });
 
-router.get('/add/post', authMiddleware, (req, res) => {
-    res.render('addingPostPage');
+router.get('/add/post', authMiddleware, async (req, res) => {
+    const currentUser = await req.user;
+    res.render('addingPostPage', {currentUser: currentUser.dataValues});
 });
 
 export default router;
