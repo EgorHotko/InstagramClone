@@ -23,6 +23,11 @@ export class UserService implements IUserService{
         return user;
     }
 
+    public async getUserByUsername(username: string): Promise<IUser>{
+        const user = await this.userDal.getByUsername(username);
+        return user;
+    }
+
     public async createUser(newUser: IUser): Promise<IUser>{
         return await this.userDal.create(newUser);
     }

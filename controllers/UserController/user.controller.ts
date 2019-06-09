@@ -16,6 +16,9 @@ export class UserController implements IUserController{
     async getUserByEmail(userEmail: string): Promise<IUser>{
         return await this.userService.getUserByEmail(userEmail);
     }
+    async getUserByUsername(username: string): Promise<IUser>{
+        return await this.userService.getUserByUsername(username);
+    }
 
     async createUser(newUser: IUser): Promise<IUser>{
         return await this.userService.createUser(newUser);

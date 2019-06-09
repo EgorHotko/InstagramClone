@@ -22,6 +22,13 @@ export class UserDal implements IUserDal{
         return user;
     }
 
+    public async getByUsername(username: string): Promise<IUser>{
+        const user = await this.User.findOne({
+            where: {username: username}
+        });
+        return user;
+    }
+
     public async create(newUser: IUser): Promise<IUser>{
         if(!newUser.username){
             newUser.username = /[^@]+/.exec(newUser.email)[0];

@@ -9,6 +9,7 @@ export interface IUser {
 export interface IUserDal {
     getById(userId: number): Promise<IUser>;
     getByEmail(userEmail: string): Promise<IUser>;
+    getByUsername(username: string): Promise<IUser>;
     create(newUser: IUser): Promise<IUser>;
     deleteById(userId: number): Promise<void>;
     editById(userId: number, newUserData: IUser): Promise<void>;
@@ -19,6 +20,7 @@ export interface IUserDal {
 export interface IUserService {
     getUserById(userId: number): Promise<IUser>;
     getUserByEmail(userEmail: string): Promise<IUser>;
+    getUserByUsername(username: string): Promise<IUser>;
     createUser(newUser: IUser): Promise<IUser>;
     editUserById(userId: number,newUserData: IUser): Promise<void>;
     deleteUserById(userId: number): Promise<void>;

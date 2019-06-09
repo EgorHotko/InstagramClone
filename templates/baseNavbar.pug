@@ -15,7 +15,6 @@ html
                     a(href=`/user/${currentUser.id}`) Profile
                     button(onclick="logOut()") Logout
             div(class="navigbar-right-content")
-                form
-                    input(id="search" type="search" placeholder='Search')
-                    button(id="searchSubmit" type='submit' class="btn success") Search
+                input(id="searchHeaderInput" placeholder='Search')
+                button(onclick="search()") Search
         block content 

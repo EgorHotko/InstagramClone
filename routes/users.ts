@@ -23,6 +23,12 @@ router.get('/email/:email', async (req, res) => {
     }
 });
 
+router.get('/username/:username', async (req, res) => {
+    const username: string = req.params.username;
+    const user = await userController.getUserByUsername(username);
+    await res.send(user);
+})
+
 router.post('/', async (req, res) => {
     const newUser = req.body;
     await userController.createUser(newUser);
