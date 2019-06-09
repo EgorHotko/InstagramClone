@@ -35,6 +35,20 @@ router.get("/user/:id", authMiddleware, async (req, res) =>{
     }
 });
 
+router.get('/hashtag/:hashtag', authMiddleware, async (req, res) => {
+    const hashtag: string = req.params.hashtag;
+    const currentUser = await req.user;
+    const postsRes = await fetch(`http://localhost:3000/api/hashtags/${hashtag}/posts`);
+    const posts = await postsRes.json();
+    await Promise.all(posts.map( async (post) => {
+        const UserRes = await fetch(`http://localhost:3000/api/users/${post.userId}`);
+        const user = await UserRes.json();
+        post.user = user;
+        return post;
+    }));
+    await res.render('mainPage', {currentUser: currentUser.dataValues, posts: posts});
+});
+
 router.get('/post/:id', authMiddleware, async (req, res) => {
     const postId: number = +req.params.id;
     const currentUser = await req.user; 

@@ -42,7 +42,7 @@ app.use('/', viewsRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/comments', commentRouter);
-app.use('/api/hashtag', hashtagRouter);
+app.use('/api/hashtags', hashtagRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(3000, function () {

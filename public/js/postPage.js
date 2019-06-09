@@ -7,7 +7,7 @@ $(document).ready(function(){
     if ( entries.length > 0 ) {
     
       entries.each(function(){
-          contents = $(this).text().replace(/#(\S+)/g,'<a href="/">#$1</a>');
+          contents = $(this).text().replace(/#(\S+)/g,'<a href="/hashtag/$1">#$1</a>');
         
         $(this).html(contents);
         
