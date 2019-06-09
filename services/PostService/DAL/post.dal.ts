@@ -51,11 +51,12 @@ export class PostDal implements IPostDal{
         }, { force: true });
     }
 
-    public async editById(postId: number, newPostData: string): Promise<void>{
+    public async editById(postId: number, newPostData: IPost): Promise<void>{
+        const photoPath = `${Config.PHOTOSPATH}\\${newPostData.photo}`;
         const post = await this.Post.findOne({
             where: {id: postId}
         });
-        await post.update({text: newPostData});
+        await post.update({text: newPostData.text, photo: photoPath});
     }
 
     public async isPostExisted(postId: number): Promise<boolean>{

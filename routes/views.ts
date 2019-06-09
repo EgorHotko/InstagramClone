@@ -67,6 +67,10 @@ router.get('/post/:id', authMiddleware, async (req, res) => {
     res.render('postPage', {user: user, post: post, comments: comments, currentUser: currentUser.dataValues});
 });
 
+router.get('/edit/post/:id', authMiddleware, (req, res) => {
+    res.render('postEditPage');
+});
+
 router.get('/register', (req, res) => {
     res.render('registerPage');
 });

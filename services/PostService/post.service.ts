@@ -33,7 +33,7 @@ export class PostService implements IPostService{
         return await this.postDal.create(userId, newPost);
     }
 
-    public async editPostById(userId: number,newPostData: string): Promise<void>{
+    public async editPostById(userId: number,newPostData: IPost): Promise<void>{
         await this.postDal.editById(userId, newPostData);
     }
 

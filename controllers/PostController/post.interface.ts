@@ -6,6 +6,6 @@ export interface IPostController{
     getLastPosts(): Promise<IPost[]>;
     getPostsByUserId(userId: number): Promise<IPost[]>;
     createPost(userId: number, newPost: IPost): Promise<IPost>;
-    editPost(postId: number, newPostData: string): Promise<void>;
+    editPost(postId: number, newPostData: IPost): Promise<void>;
     deletePost(postId: number): Promise<void>;
 }

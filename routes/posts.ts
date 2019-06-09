@@ -3,7 +3,6 @@ import { PostController } from '../controllers/PostController/post.contoller';
 import { HashtagController } from '../controllers/HashtagController/hashtag.controller';
 import { upload } from '../db/storage';
 import { IPost } from '../services/PostService/post.interfaces';
-import fetch from 'node-fetch';
 
 const router = express.Router();
 const postController = new PostController();
@@ -40,10 +39,10 @@ router.post('/user/:userId', upload.single('photo'), async (req, res) => {
     await res.send("Post created");
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', upload.single('photo'), async (req, res) => {
     const postId = req.params.id;
-    const newPostData = req.body.text;
-    await postController.editPost(postId, newPostData)
+    const filename = req["file"].originalname;
+    await postController.editPost(postId, {...req.body, photo: filename})
     await res.send("Post edited");
 });
 

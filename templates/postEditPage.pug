@@ -1,0 +1,17 @@
+extends baseNavbar.pug
+block append head
+    link(rel="stylesheet", href="/css/addingPostPage.css")
+    script(src='/js/postEditPage.js')
+block content
+    div(class="createpost-container")
+        h3 Edit post:
+        div(class="createpost-content")
+            form(method="put" enctype="multipart/form-data" action="/api/posts/:id")
+                div(class="form-group")
+                    label(for="formGroupPostInput") Input text
+                    input(type="text" class="form-control" id="textInput" placeholder="text")
+                div(class="form-group")
+                    label(for="formGroupPostInput") Choose photo
+                    input(type="file" id="postPhotoInput" accept="image/png, image/jpeg")
+                div(class="btn-wrapper")
+                    button(class="btn-primary" onclick='sendReq()' type="button" id="createBtn") Edit

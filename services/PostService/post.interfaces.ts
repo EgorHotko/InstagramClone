@@ -12,7 +12,7 @@ export interface IPostDal {
     getLastPosts(): Promise<IPost[]>;
     getByUserId(userId: number): Promise<IPost[]>;
     create(userId: number, newPost: IPost): Promise<IPost>;
-    editById(postId: number, newPostData: string): Promise<void>;
+    editById(postId: number, newPostData: IPost): Promise<void>;
     deleteById(postId: number): Promise<void>;
     isPostExisted(postId: number): Promise<boolean>;
 }
@@ -22,6 +22,6 @@ export interface IPostService {
     getLastPosts(): Promise<IPost[]>;
     getPostsByUserId(userId: number): Promise<IPost[]>
     createPost(userId: number, newPost: IPost): Promise<IPost>;
-    editPostById(userId: number,newPostData: string): Promise<void>;
+    editPostById(userId: number,newPostData: IPost): Promise<void>;
     deletePostById(postId: number): Promise<void>;
 }
