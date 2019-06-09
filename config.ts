@@ -5,6 +5,10 @@ export const Config = {
         DB_HOST: "localhost",
         DB_NAME: "instagram"
     },
+    EMAILDATA: {
+        EMAIL: process.env.GMAIL_EMAIL,
+        PASSWORD: process.env.GMAIL_PASSWORD
+    },
     PHOTOSPATH: `\\photos`,
     STARTPHOTONAME: `startPhoto.jpg`,
     JWT_SECRET: 'ILoveCats',

@@ -1,4 +1,5 @@
 const nodeMailer = require('nodemailer');
+import { Config } from '../../config';
 
 
 export class MailController{
@@ -7,13 +8,13 @@ export class MailController{
         const transporter = nodeMailer.createTransport({
           service: 'Gmail',
           auth: {
-            user: 'ehotkofinaltask@gmail.com',
-            pass: 'finaltask'
+            user: Config.EMAILDATA.EMAIL,
+            pass: Config.EMAILDATA.PASSWORD
           }
         });
       
         const mailOptions = {
-          from: '"Egor" <ehotkofinaltask@gmail.com>',
+          from: `"Egor" <${Config.EMAILDATA.EMAIL}>`,
           to: user.email,
           subject: 'Message',
           text: `You have been mentioned in this comment: ${comment.text}`
