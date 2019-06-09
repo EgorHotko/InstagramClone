@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Passport init
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,7 +37,6 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use(cookieSession(Config.COOCKIE_SESSION));
 app.use('/', viewsRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
@@ -46,5 +45,5 @@ app.use('/api/hashtags', hashtagRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('App listening on port 3000!');
 });

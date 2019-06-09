@@ -1,6 +1,5 @@
 import { User } from '../../../db/models/models';
 import { IUser, IUserDal } from '../user.interfaces';
-import * as fs from 'fs';
 import { Config } from '../../../config';
 
 export class UserDal implements IUserDal{
