@@ -1,5 +1,6 @@
 extends baseNavbar.pug
 block append head
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
     link(rel="stylesheet", href="/css/postPage.css")
     script(src='/js/postPage.js')
 block content
@@ -11,7 +12,7 @@ block content
             div(class="photo-container")
                 img(src=`${post.photo}`, alt="")
             div(class="text-container")
-                h6 #{post.text}
+                p(id="postText") #{post.text}
                 if currentUser.id == post.userId
                     a(onclick="deletePost()") Delete
             div(class="post-footer")

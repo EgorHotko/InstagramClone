@@ -1,4 +1,22 @@
 
+$(document).ready(function(){
+  
+    var siteURL = 'http://cdevroe.com/',
+        entries = $('.text-container p');
+    
+    if ( entries.length > 0 ) {
+    
+      entries.each(function(){
+          contents = $(this).text().replace(/#(\S+)/g,'<a href="/">#$1</a>');
+        
+        $(this).html(contents);
+        
+      });
+      
+    }
+    
+  });
+
 const addComment = function() {
     var fd = new FormData();
     const xhr = new XMLHttpRequest();

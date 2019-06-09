@@ -55,11 +55,11 @@
     justify-content: space-between;
 }
 
-.text-container h6{
+.text-container p {
     padding-left: 20px;
 }
-.text-container a{
-    padding-right: 20px;
+.text-container a {
+    padding-right: 10px;
 }
 
 .post-footer {
